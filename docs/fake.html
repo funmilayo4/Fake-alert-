@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fake SMS Alert Simulation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6e6e6;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .popup {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #fff;
+      color: #000;
+      border-left: 5px solid green;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      width: 320px;
+      padding: 15px;
+      border-radius: 8px;
+      z-index: 9999;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .popup h4 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: green;
+    }
+
+    .popup p {
+      margin: 5px 0;
+      font-size: 15px;
+    }
+
+    .close-btn {
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .close-btn button {
+      background: red;
+      border: none;
+      color: #fff;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="popup" id="smsAlert">
+  <h4>₦10,000.00 CREDIT</h4>
+  <p><strong>From:</strong> OPay</p>
+  <p><strong>Acct:</strong> 308XXXX123</p>
+  <p><strong>Time:</strong> 15 Jun 2025, 3:45 PM</p>
+  <p><strong>Bal:</strong> ₦53,000.50</p>
+
+  <div class="close-btn">
+    <button onclick="closeAlert()">Dismiss</button>
+  </div>
+</div>
+
+<script>
+  function closeAlert() {
+    document.getElementById('smsAlert').style.display = 'none';
+  }
+</script>
+
+</body>
+    </html>
