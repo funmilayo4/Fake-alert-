@@ -13,13 +13,13 @@
     }body {
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
   color: white;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
 
 .logo {
@@ -34,11 +34,13 @@
   animation: fadeIn 2s ease-in;
 }
 
-.partners {
+.features {
   margin-top: 2rem;
-  font-size: 0.95rem;
-  color: #ccc;
-  animation: fadeIn 3s ease-in;
+  max-width: 600px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  animation: fadeIn 2.5s ease-in;
 }
 
 .button {
@@ -56,6 +58,20 @@
 
 .button:hover {
   background-color: #007acc;
+}
+
+.footer {
+  font-size: 0.85rem;
+  color: #aaa;
+  text-align: center;
+  margin-top: 4rem;
+  animation: fadeIn 3.5s ease-in;
+}
+
+.partners {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #ccc;
 }
 
 @keyframes slideDown {
@@ -93,12 +109,22 @@
   </style>
 </head>
 <body>
-  <div class="logo">🚀 Welcome to MyPOS App</div>
-  <div class="tagline">Smart Monitoring. Secure Control. Real Growth.</div>
-  <div class="partners">
-    Trusted by CBN Licensed Providers:<br />
-    <strong>Opay</strong>, <strong>Moniepoint</strong>, <strong>Kuda</strong>, <strong>PalmPay</strong>
+  <div>
+    <div class="logo">🚀 Welcome to MyPOS App</div>
+    <div class="tagline">Smart Monitoring. Secure Control. Real Growth.</div>
+    <div class="features">
+      📊 Track terminal transactions in real-time.<br>
+      💼 Calculate daily profits and performance.<br>
+      🔐 Analyze deposits, withdrawals, and agent earnings.<br>
+      ⚙️ Manage your POS devices from one smart dashboard.<br>
+      🧠 Empowering POS agents with tools that matter.
+    </div>
+    <button class="button" onclick="window.location.href='register.html'">Get Started</button>
   </div>
-  <button class="button" onclick="window.location.href='register.html'">Get Started</button>
+  <div class="footer">
+    ✅ Trusted by CBN-licensed fintech partners:<br>
+    <span class="partners">Opay • Moniepoint • Kuda • PalmPay</span><br><br>
+    © 2025 Monitor Controller for POS. All rights reserved.
+  </div>
 </body>
 </html>
