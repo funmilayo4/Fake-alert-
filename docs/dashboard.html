@@ -1,106 +1,104 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MyPOS Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Inter', sans-serif;
       margin: 0;
-      background-color: #f0f4f8;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      height: 100vh;
-      padding: 2rem;
-    }.dashboard {
-  background: white;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 500px;
-  text-align: center;
-}
-
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.popup-content {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 16px;
-  text-align: center;
-  max-width: 400px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-.popup-content h2 {
-  margin-bottom: 1rem;
-}
-
-.popup-content p {
-  margin-bottom: 1.5rem;
-}
-
-.popup-content button {
-  margin: 0.5rem;
-  padding: 0.7rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.activate {
-  background-color: #00b894;
-  color: white;
-}
-
-.decline {
-  background-color: #d63031;
-  color: white;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: scale(0.9);}
-  to {opacity: 1; transform: scale(1);}
-}
-
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #101220, #1a1f3c);
+      color: white;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    .modal {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      margin-top: 80px;
+      backdrop-filter: blur(10px);
+    }
+    .modal h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    .modal p {
+      font-size: 16px;
+      margin-bottom: 24px;
+      color: #ccc;
+    }
+    .btn {
+      padding: 12px 24px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-blue {
+      background: #1e90ff;
+      color: white;
+    }
+    .btn-blue:hover {
+      background: #006de1;
+    }
+    .btn-red {
+      background: #ff4d4d;
+      color: white;
+    }
+    .btn-red:hover {
+      background: #d93636;
+    }
+    .status {
+      text-align: center;
+      margin-top: 60px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 12px;
+    }
+    .status p {
+      font-size: 16px;
+      margin: 12px 0;
+    }
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <div class="dashboard">
-    <h1>Welcome to MyPOS Dashboard</h1>
-    <p id="status">📍 Your POS is not yet activated.</p>
-  </div>  <div class="popup" id="activationPopup">
-    <div class="popup-content">
-      <h2>Activate Your POS</h2>
-      <p>Your POS terminal is not yet activated. Press the button below to continue activation or decline for later.</p>
-      <button class="activate" onclick="proceedActivation()">Activate</button>
-      <button class="decline" onclick="declineActivation()">Decline</button>
-    </div>
+  <div class="container">
+    <!-- Welcome Modal -->
+    <div id="activationModal" class="modal">
+      <h2>🔔 Welcome to MyPOS Dashboard!</h2>
+      <p>Your POS terminal is not yet connected. Please activate to start tracking your performance and transactions.</p>
+      <button class="btn btn-blue" onclick="activatePOS()">Activate Now</button>
+      <button class="btn btn-red" onclick="declineActivation()">Decline</button>
+    </div><!-- Status Section -->
+<div id="statusSection" class="status hidden">
+  <p><strong>⚠️ Unfortunately your POS is not connected.</strong></p>
+  <p>Some features are unavailable until activation.</p>
+  <button class="btn btn-blue" onclick="window.location.href='activate.html'">Connect Now</button>
+</div>
+
   </div>  <script>
-    function proceedActivation() {
-      window.location.href = "activate.html";
+    function activatePOS() {
+      // Redirect to activation page
+      window.location.href = 'activate.html';
     }
 
     function declineActivation() {
-      document.getElementById("activationPopup").style.display = "none";
-      document.getElementById("status").textContent = "⚠️ You declined POS activation. Some features will be limited.";
+      // Hide modal, show limited dashboard message
+      document.getElementById('activationModal').classList.add('hidden');
+      document.getElementById('statusSection').classList.remove('hidden');
     }
   </script></body>
-  </html>
+</html>
